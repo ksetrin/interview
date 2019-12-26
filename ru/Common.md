@@ -7,8 +7,7 @@
     <script src="file.js">
       alert(1); // содержимое игнорируется, так как есть атрибут src
     </script>
-    ```
-1. objects are memory structure in different memory positions for the set they should be completely different objects
+    ``` 
 1. Почему нужны точка с запятой?
     ```
     [1, 2].forEach(alert) // works
@@ -59,15 +58,16 @@
 1. И «&&» находит первое ложное значение
    Другими словами, И возвращает первое ложное значение. Или последнее, если ничего не найдено.
 1. Разница в том, что И возвращает первое ложное значение, а ИЛИ –  первое истинное.
-1. In JavaScript, if you define a function as a variable, the variable name will be hoisted but you cannot access until JS execution encounters its definition.
+1. Если определить функцию как переменную, то эта переменная будет объявлена, но не будет доступна для вызова
     ```
-    console.log(square(5)); //TypeError: square is not a function
+    console.log(square); // undefined (переменная объявлена)
+    console.log(square(5)); // TypeError: square is not a function (не доступна для вызова)
      
     var square = function(n) { 
       return n * n; 
     }
     ```
-    But
+    Но
     ```
     console.log(square(5)); // return 25
     function square(n) { return n * n; }
@@ -201,8 +201,31 @@
     ```
 1. Spread operator
     Под капотом оператор расширения использует итераторы, чтобы перебирать элементы. Так же, как это делает for..of.
-1. 
-1. 
+1. Как можно переписать рекурсивную функцию? - Можно переписать с использованием стека (что более оптимально, так как стек может иметь большую вложенность)
+1. interface vs abstract class javascript
+interface is often some kind of type declaration, whereas class or abstract class are class declaration, which in JS are just constructors, though they often define a specific "type" of values. abstract are a special case in between the two because they define a new concrete value (a constructor in JS) but cannot be instantiated without being subclassed.
+
+Bottom line, interfaces are declaration in the space of types, whereas [abstract] class are declaration in the space of values. In typescript for instance you can bridge the two using class implements. In JavaScript the term interface more often refers to the general shape of behaviour of a specific type of value returned by some API (see https://developer.mozilla.org/en-US/docs/Web/API/Event where the term interface is used to describe different kind of events).
+
+
+
+Interfaces only describe what properties and methods should be implemented, and don’t describe how methods should work.
+
+But abstract classes may describe how a method works, like in regular classes. For example:
+
+abstract class MyClass {
+   abstract method_1() // a method with no implementation
+
+   method_2() { // a method with implementation
+      // do something
+   }
+}
+Interfaces look like:
+
+interface MyInterface {
+   method_1(): void;
+   method_2(): string;
+}
 1. 
 1. 
 1. 
