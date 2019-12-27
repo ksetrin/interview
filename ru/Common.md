@@ -72,13 +72,26 @@
     console.log(square(5)); // return 25
     function square(n) { return n * n; }
     ```
-1. Use .bind() when you want that function to later be called with a certain context, useful in events. Use .call() or .apply() when you want to invoke the function immediately, with modification of the context.
+1. Метод .bind() позволяет привязать контекст к функции, этот метод только привязывает контекст и не вызывает саму функцию.
+    ```
+    let user = {
+        firstName: "Вася"
+    };
+    
+    function func() {
+        alert(this.firstName);
+    }
+    
+    let funcUser = func.bind(user);
+    funcUser(); // Вася
+    ```
+1. Методы .call() и .apply() позволяют вызвать функцию с определнным контекстом, но this передается в качестве аргумента   
 1. Разница между call и apply только в том, что apply принимает вторым параметром массив, а call принимает несколько аргументов
     ```
     theFunction.apply(valueForThis, arrayOfArgs)
     theFunction.call(valueForThis, arg1, arg2, ...)
     ```
-1. .call exapmle
+    Пример с .call()
     ```
     var mathLib = {
         pi: 3.14,
@@ -98,7 +111,7 @@
     mathLib.area.call({pi: 3.14159}, 2);
     12.56636
     ```
-1. .apply
+    Пример с .apply()
     ```
     var cylinder = {
         pi: 3.14,
