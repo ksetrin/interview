@@ -124,12 +124,11 @@
     cylinder.volume.apply({pi: 3.14159}, [2, 6]);
     75.39815999999999
     ```
-1. Bind attaches a brand new this to a given function. In bind’s case, the function is not executed instantly like Call or Apply.
-1. JavaScript scope well (Closures as well)
-    Global scope - 
-    Local Scope/Function scope - 
-    Block scope(Introduced in ES6) - 
-    A closure is a function that returns another function and wraps data. 
+1. Существует несколько оружений (scope)
+    1. Глобальное окружение (global scope) 
+    1. Локальное окружение (local/function) 
+    1. Блочное окружение (block) 
+1.  Замыкание это функция (родитель), которая возвращает другую функцию (потомок) с доступом к переменным функции(родителя) 
     ```
     function generator(input) {
           var index = 0;
@@ -147,10 +146,7 @@
     mygenerator.next(); // returns "b"
     mygenerator.next() // returns "o"
     ```
-    A closure is a function that returns another function and wraps data. The above string generator qualifies for a closure. 
-    !!! Побольше про замыкания и генераторы
-    If you defined one more function in the second level function, that can access all parent’s variables. - замыкание
-
+    Все вложенные функции (потомки) будут иметь доступ к переменным своих родителей
 1. this in object scope
     ```
     var person = {
