@@ -147,7 +147,7 @@
     mygenerator.next() // returns "o"
     ```
     Все вложенные функции (потомки) будут иметь доступ к переменным своих родителей
-1. this in object scope
+1. Внутри объекта в методах можно использовать this и он будет ссылаться на текущий объект
     ```
     var person = {
         name: "Stranger",
@@ -158,36 +158,36 @@
     }
     person.identity; // returns {who: "Stranger", howOld: 24}
     ```
-1. Object.freeze allows us to freeze an object so that existing properties cannot be modified.
+1. Object.freeze позволяет "заморозить" объект таким образом, что станет невозможно изменять его свойства 
     ```
-    var marks = {physics: 98, maths:95, chemistry: 91};
+    var marks = {physics: 98, maths: 95, chemistry: 91};
     finalizedMarks = Object.freeze(marks);
     finalizedMarks["physics"] = 86; // throws error in strict mode
     console.log(marks); // {physics: 98, maths: 95, chemistry: 91}
     ```
-1. Object.seal is slightly different from the freeze. It allows configurable properties but won’t allow new property addition or deletion or properties.
+1. Object.seal немного отличается от freeze. Позволяет изменять свойства, но не позволяет добавлять или удалять свойства 
     ```
-    var marks = {physics: 98, maths:95, chemistry: 91};
+    var marks = {physics: 98, maths: 95, chemistry: 91};
     Object.seal(marks);
     delete marks.chemistry; // returns false as operation failed
     marks.physics = 95; // Works!
     marks.greek = 86; // Will not add a new property
     ```
-1. These four things you should remember about prototypical inheritance.
+1. Прототипное наследование
     Class properties are bound using this
     Class methods are bound using prototype object
     To inherit properties, use call function passing this object
     To inherit methods, use Object.create to link prototypes of parent and child
     Always set child class constructor to itself for getting the right identity of its objects
     Note: These are things happens under the hood even with new class syntax.
-1. Callbacks are the functions those executed after an I/O operation is done
-1. Hoisting
-    Hoisting is a process of pushing the declared variables to the top of the program while running it. For Ex:
+1. Колбэки (callbacks) это функции, которые выполняются, когда  I/O операция завершена
+1. Поднятие (hoisting) - функции и переменные объявляются в самом начале программы
     ```
     doSomething(foo); // used before
     var foo; // declared later
     ```
-    https://developer.mozilla.org/en-US/docs/Glossary/Hoisting?source=post_page-----23a5c0fa4d0d----------------------
+    Переменная foo объявлена позже ее использования, но благодаря поднятию ошибки не происходит
+    JavaScript "поднимает" только объявление, но не инициализацию.
 1. a JavaScript VM does two things while running a program:
     First scan the program, collect all the variable and function declarations and assign memory spaces for it.
     Run the program now by filling variable values assigned any, if not, fill undefined
